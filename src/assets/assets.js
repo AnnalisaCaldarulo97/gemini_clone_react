@@ -15,8 +15,9 @@ import user_icon from './programmer.png';
 import bulb from './bulb.png';
 import compass from './compass-alt.png';
 import edit_message from './edit_message.png';
+import gemini_icon from './google-gemini-icon.png';
 
 
 export const assets = {
-    gallery, circle_microphone, code_simple, edit_message, comment_alt_middle, add_image, interrogation, menu_burger, paper_plane_top, picture, plus, settings, time_past, youtube, user_icon, bulb, compass
+    gallery, circle_microphone, gemini_icon, code_simple, edit_message, comment_alt_middle, add_image, interrogation, menu_burger, paper_plane_top, picture, plus, settings, time_past, youtube, user_icon, bulb, compass
 }
