@@ -78,11 +78,14 @@ const Main = () => {
                         <div>
                             <img src={assets.add_image} alt="" />
                             <img src={assets.circle_microphone} alt="" />
+                          {input?
                             <img onClick={() => onSent()} onKeyDown={(e) => {
                                 if (e.key === 'Enter') {
                                     onSent();
                                 }
                             }} src={assets.paper_plane_top} alt="" />
+                            : null
+                          }
                         </div>
                     </div>
                     <p className="bottom-info">

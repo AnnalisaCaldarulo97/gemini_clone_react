@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
 
+
 import runChat from "../config/gemini";
 
 export const Context = createContext();
@@ -18,7 +19,7 @@ const ContextProvider = (props) => {
         }, 75 * index)
     }
 
-    const newChat = () =>{
+    const newChat = () => {
         setLoading(false);
         setShowResult(false)
     }
@@ -36,6 +37,9 @@ const ContextProvider = (props) => {
             setPreviousPrompt(prev => [...prev, input])
             setRecentPrompt(input)
             response = await runChat(input);
+            const htmlContent = remark().use(html).processSync(response).toString();
+            setResultData(htmlContent);
+
         }
         // setRecentPrompt(input)
 
