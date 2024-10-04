@@ -178,6 +178,13 @@
     line-height: 1.8;
 }
 
+code{
+    background-color: #eee;
+    border-radius: 3px;
+    font-family: courier, monospace;
+    padding: 0 3px;
+    display: block;
+}
 .bold{
     font-weight: bold;
 }

@@ -3,8 +3,11 @@ import "./Sidebar.css";
 import { assets } from "../../assets/assets";
 import { Context } from "../../context/Context";
 const Sidebar = () => {
-    const [extended, setExtended] = useState(false);
+    const [open, setOpen] = useState(false);
 
+    // const handleSidebarClick = () => {
+    //     setOpen(!open);
+    // }
     const { onSent, previousPrompt, setRecentPrompt, newChat } = useContext(Context)
 
     const loadPrompt = async (prompt) => {
@@ -13,14 +16,21 @@ const Sidebar = () => {
     }
 
     return (
-        <div className="sidebar">
+        // <div className={`sidebar ${open ? 'open' : ''}`}>
+        <div className={`sidebar ${open == true ? 'open' : 'closed'}`}>
             <div className="top">
-                <img onClick={() => setExtended(prev => !prev)} className="menu icon" src={assets.menu_burger} alt="" />
-                <div className="new-chat" onClick={() => newChat()}>
-                    <img className="newChat icon" src={assets.plus} alt="" />
-                    {extended ? <p>New Chat</p> : null}
+                <div className="icontop">
+                    <div>
+                    <img onClick={() => setOpen(prev => !prev)} className="menu icon" src={assets.menu_burger} alt="" />
+                    </div>
+                    {/* <img src={assets.menu_burger} onClick={handleSidebarClick} className="menu icon" alt="" /> */}
+                    <div className="new-chat" onClick={() => newChat()}>
+                        <img className="newChat icon" src={assets.plus} alt="" />
+                        {open ? <p className="chat">New Chat</p> : null}
+
+                    </div>
                 </div>
-                {extended ?
+                {open ?
                     <div className="recent">
                         <p className="recent-title">Recent</p>
                         {
@@ -41,15 +51,15 @@ const Sidebar = () => {
             <div className="bottom">
                 <div className="bottom-item recent-entry">
                     <img className="icon" src={assets.interrogation} alt="" />
-                    {extended ? <p>Help</p> : null}
+                    {open ? <p className="chat">Help</p> : null}
                 </div>
                 <div className="bottom-item recent-entry">
                     <img className="icon" src={assets.time_past} alt="" />
-                    {extended ? <p>Activity</p> : null}
+                    {open ? <p className="chat">Activity</p> : null}
                 </div>
                 <div className="bottom-item recent-entry">
                     <img className="icon" src={assets.settings} alt="" />
-                    {extended ? <p>Settings</p> : null}
+                    {open ? <p className="chat">Settings</p> : null}
                 </div>
             </div>
         </div>

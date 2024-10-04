@@ -67,25 +67,25 @@ const Main = () => {
                                     <hr />
                                 </div>
                                 :
-                                <p dangerouslySetInnerHTML={{ __html: resultData }}></p>
+                                <pre dangerouslySetInnerHTML={{ __html: resultData }}></pre>
                             }
                         </div>
                     </div>
                 }
                 <div className="main-bottom">
                     <div className="search-box">
-                        <input onChange={(e) => setInput(e.target.value)} value={input} type="text" placeholder="Enter a prompt here" />
+                        <input onChange={(e) => setInput(e.target.value)} value={input} type="text" placeholder="Enter a prompt here" onKeyDown={(e) => {
+                                    if (e.key === 'Enter') {
+                                        onSent();
+                                    }
+                                }}  />
                         <div>
-                            <img src={assets.add_image} alt="" />
-                            <img src={assets.circle_microphone} alt="" />
-                          {input?
-                            <img onClick={() => onSent()} onKeyDown={(e) => {
-                                if (e.key === 'Enter') {
-                                    onSent();
-                                }
-                            }} src={assets.paper_plane_top} alt="" />
-                            : null
-                          }
+                            {/* <img src={assets.add_image} alt="" />
+                            <img src={assets.circle_microphone} alt="" /> */}
+                            {input ?
+                                <img onClick={() => onSent()} src={assets.paper_plane_top} alt="" />
+                                : null
+                            }
                         </div>
                     </div>
                     <p className="bottom-info">
